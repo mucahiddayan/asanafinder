@@ -1,0 +1,82 @@
+<!-- Single Asana -->
+<div class="asana"
+ id="asanaP{{currentPage}}I{{index}}" data-uid="{{post.link}}"
+ ng-class="{'tutorial emptyWarning':firstTime.visit&&$first&&!selectedAsanas.length&&!isGast, 'as-list':listType}"
+ ng-repeat="(index,post) in paginated |allFilter:sortType:sortReverse:levelFilter:typeFilter:searchFilter:XOR  track by $index"   
+ dnd-allowed-types 
+ dnd-draggable="post" 
+ dnd-effect-allowed="copy"
+ dnd-dragstart="dragStarted(event)"
+ dnd-dragend="dragEnded(event)"
+ dnd-type="'asana'"
+ data-title="{{post.title}}" >
+	<div class="thumb"><img ng-src="{{post.image_src || defaultImage}}" ng-srcset="{{post.srcset}}"></div>
+	<div class="title" ng-model="title"><a ng-click="goTo(post.link)">{{post.title}}</a></div>
+	<div ng-show="post.sanskrit_name" class="sanskrit-name">{{post.sanskrit_name}}</div>
+	<div class="not-in-drop-area" ng-class="{'opened':opened}" ng-click="opened=!opened">		
+		<span class="label" ng-show="post.sanskrit_name_desc">Sanskrit Name Beschreibung: </span><div ng-show="post.sanskrit_name_desc" class="sanskrit-name_dec">{{post.sanskrit_name_desc}}</div>
+		<span class="label" ng-show="post.levels.length">Level: </span><div title="Asana Levels" class="hasChild levels" ng-show="post.levels.length"><span class="{{level.toLowerCase()}}" ng-click="searchThis($event)" ng-repeat="level in post.levels">{{level}}</span></div>
+		<span class="label" ng-show="post.types.length">Type: </span><div title="Asana Typen" class="hasChild types" ng-show="post.types.length"><span ng-click="searchThis($event)" ng-repeat="type in post.types">{{type}}</span></div>
+		<span class="label" ng-show="post.preparings.length">Vorpreparingbereitende Asanas : </span><div title="Vorbereitende Asanas" class="hasChild preparing-ch" ng-show="post.preparings.length"><span ng-click="searchThis($event)" ng-repeat="pre in post.preparings">{{pre}}</span></div>
+		<span class="label" ng-show="post.followings.length" >Anschliessende Asanas: </span> <div title="Anschliessende Asanas" class="hasChild following-ch" ng-show="post.followings.length"><span ng-click="searchThis($event)" ng-repeat="flw in post.followings">{{flw}}</span></div>
+	</div>	
+</div>
+<!-- Single Asana ends-->
+
+<!-- mutual asanas -->
+<div class="asana mutual filtered"
+ id="asanaP{{currentPage}}I{{index}}" data-uid="{{post.link}}"
+ ng-class="{'as-list':listType}"
+ ng-repeat="(index,post) in mutualAsanas track by $index"
+ ng-show = "SPFA"
+ dnd-allowed-types 
+ dnd-draggable="post" 
+ dnd-effect-allowed="copy"
+ dnd-dragstart="dragStarted(event)"
+ dnd-dragend="dragEnded(event)"
+ dnd-type="'asana'"
+ data-title="{{post.title}}" >
+	<div class="thumb"><img ng-src="{{post.image_src || defaultImage}}" ng-srcset="{{post.srcset}}"></div>
+	<div class="title" ng-model="title"><a ng-click="goTo(post.link)">{{post.title}}</a></div>
+	<div ng-show="post.sanskrit_name" class="sanskrit-name">{{post.sanskrit_name}}</div>	
+	<span class="data-filter-tag"></span><div class="beforeafter"></div>
+</div>
+
+<!-- preparing asanas -->
+<div class="asana preparing filtered"
+ id="asanaP{{currentPage}}I{{index}}" data-uid="{{post.link}}"
+ ng-class="{'as-list':listType}"
+ ng-repeat="(index,post) in preparingAsanas track by $index"
+ ng-show = "SPA"
+ dnd-allowed-types 
+ dnd-draggable="post" 
+ dnd-effect-allowed="copy"
+ dnd-dragstart="dragStarted(event)"
+ dnd-dragend="dragEnded(event)"
+ dnd-type="'asana'"
+ data-title="{{post.title}}" >
+	<div class="thumb"><img ng-src="{{post.image_src || defaultImage}}" ng-srcset="{{post.srcset}}"></div>
+	<div class="title" ng-model="title"><a ng-click="goTo(post.link)">{{post.title}}</a></div>
+	<div ng-show="post.sanskrit_name" class="sanskrit-name">{{post.sanskrit_name}}</div>	
+	<span class="data-filter-tag"></span><div class="beforeafter"></div>
+</div>
+
+<!-- following asanas -->
+<div class="asana following filtered"
+ id="asanaP{{currentPage}}I{{index}}" data-uid="{{post.link}}"
+ ng-class="{'as-list':listType}"
+ ng-repeat="(index,post) in followingAsanas track by $index"
+ ng-show = "SFA"
+ dnd-allowed-types 
+ dnd-draggable="post" 
+ dnd-effect-allowed="copy"
+ dnd-dragstart="dragStarted(event)"
+ dnd-dragend="dragEnded(event)"
+ dnd-type="'asana'"
+ data-title="{{post.title}}" >
+	<div class="thumb"><img ng-src="{{post.image_src || defaultImage}}" ng-srcset="{{post.srcset}}"></div>
+	<div class="title" ng-model="title"><a ng-click="goTo(post.link)">{{post.title}}</a></div>
+	<div ng-show="post.sanskrit_name" class="sanskrit-name">{{post.sanskrit_name}}</div>	
+	<span class="data-filter-tag"></span><div class="beforeafter"></div>
+</div>
+

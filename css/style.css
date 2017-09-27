@@ -1,0 +1,40 @@
+
+/*buddy press*/
+.sequences td{
+    position: relative;
+}
+.sequences .edit-input {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    height: 100%;
+    border: none;
+    width: 100%;
+    box-shadow: 0 0 3px 2px #dcdcdc inset;
+}
+#social-share-box {
+    width: auto;
+    box-shadow: 0px 0px 10px 0px #333;
+    background-color: rgba(0,0,0,.8);
+    z-index:99999;
+}
+
+#social-share-box ul {
+    list-style:none;
+    margin: 10px;
+}
+#social-share-box ul li {
+    margin: 0;
+    padding: 10px;
+    display:inline;
+}
+.sequences tr td i {
+    font-size: 20px;
+    cursor: pointer;
+}
+/*bp ends*/
+
+.message-box{
+    color:#fff;
+    box-shadow:0px 0px 3px 0px #cccccc;    
+}

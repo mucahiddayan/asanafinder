@@ -1,0 +1,29 @@
+<!-- Selected Asana List -->
+<ul  id="drop-area"
+	dnd-external-sources="true"
+	dnd-list="selectedAsanas"
+	dnd-inserted="notFirstTimeAnymore();added(index, item, external, type)" 	 
+	dnd-allowed-types="['asana']"
+	ng-class="{'overflowed':overflowed,'enlarged':box.enlarge}" 
+	ng-click="overflowed=!overflowed">	
+	<li class="asana" id="asanaS{{index}}" data-uid="{{::post.link}}"
+		ng-class="{'tutorial':firstTime.trash&&$first&&selectedAsanas.length}" 
+		ng-repeat="post in selectedAsanas" 
+		dnd-draggable="post"  
+		dnd-moved="selectedAsanas.splice($index, 1);notFirstTimeAnymore('trash');"
+		dnd-effect-allowed="move"
+		dnd-type="'asana'"
+		dnd-horizontal-list="true"
+		>			
+		<div class="thumb"><img ng-src="{{::post.image_src || defaultImage}}" ng-srcset="{{::post.srcset}}"></div>
+		<div class="title" ng-model="title"><a ng-click="goTo(post.link)">{{::post.title}}</a></div>
+		<div class="not-in-drop-area">
+			<div ng-show="post.sanskrit_name" class="sanskrit-name">{{::post.sanskrit_name}}</div>
+			<div ng-show="post.sanskrit_name_desc" class="sanskrit-name_dec">{{::post.sanskrit_name_desc}}</div>
+			<div class="hasChild" ng-show="post.levels.length" class="levels"><span ng-click="searchThis($event)" ng-repeat="level in post.levels">{{::level.post_title}}</span></div>
+			<div class="hasChild" ng-show="post.types.length" class="types"><span ng-click="searchThis($event)" ng-repeat="type in post.types">{{::type.post_title}}</span></div>
+			<div class="hasChild" ng-show="post.vorbereitende.length" class="vorbereitende"><span ng-click="searchThis($event)" ng-repeat="vorbereitend in post.vorbereitende">{{::vorbereitend.post_title}}</span></div>
+			<div class="hasChild" ng-show="post.anschliessende.length" class="anschliessende"><span ng-click="searchThis($event)" ng-repeat="anschliessend in post.anschliessende">{{::anschliessend.post_title}}</span></div>
+		</div>
+	</li>     
+</ul>

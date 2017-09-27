@@ -1,0 +1,32 @@
+<!-- Selected Asana List -->
+<ul id="to-print">
+<li class="asana" ng-repeat="post in selectedAsanas track by $index">
+		<span class="label index">{{$index+1}}</span>		
+		<div class="title" ng-model="title"><a href="{{post.link}}">{{post.title}}</a></div>
+		<table>
+			<tbody>
+				<tr>
+					<td>Sanskrit Name: </td><td>{{post.sanskrit_name}}</td>
+				</tr>
+				<tr>
+				<td>Sanskrit Name Beschreibung: </td><td>{{post.sanskrit_name_desc}}</td>
+				</tr>
+				<tr>
+					<td>Level: </td><td><span class="level" ng-click="searchThis($event)" ng-repeat="level in post.levels">{{level.post_title}}</span></td>
+				</tr>
+				<tr>
+					<td>Type:  </td><td><span class="type" ng-click="searchThis($event)" ng-repeat="type in post.types">{{type}}</span></td>
+				</tr>				
+				<tr>
+					<td>Vorbereitende Asanas :  </td><td><span class="vor-asanas" ng-click="searchThis($event)" ng-repeat="vorbereitend in post.vorbereitende">{{vorbereitend}}</span></td>
+				</tr>
+				<tr>
+					<td>Anschliessende Asanas:  </td><td><span class="nach-asanas" ng-click="searchThis($event)" ng-repeat="anschliessend in post.anschliessende">{{anschliessend}}</span></td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="thumb"><img ng-show="post.image_src" ng-src="{{post.image_src || defaultImage}}" ng-srcset="{{post.srcset}}"></div>		
+	</li>     
+</ul>  
+
+

@@ -1,0 +1,34 @@
+<div id="sab" ng-if="posts.length" ng-class="{'emptyWarning':!selectedAsanas.length,'opened':posts.length, 'closed':box.closeSAB&&!dragging,'tutorial':firstTime.visit&&!selectedAsanas.length&&!isGast,}">
+  <div id="enlarge-button" ng-class="{'enlarge-activ':box.enlarge}">
+    <input type="checkbox" style="display:none;" ng-model="box.enlarge" id="enlarge" ng-checked="enlarge">
+    <label for="enlarge">
+     <i class="fa fa-arrows-alt" aria-hidden="true"></i>
+   </label>
+ </div>
+ <span class="number-of-asanas drop-area" ng-class="{'no-result': selectedAsanas.length == 0 }">{{selectedAsanas.length}}</span>  
+ <span id="daWarnung" class="emptyWarning" ng-if="!selectedAsanas.length">Ziehe die Asanas hier um dir einen Sequenz zu erstellen</span>  
+ <selected-asanas></selected-asanas>        
+ <div id="delete-print">
+  <div ng-show="selectedAsanas.length" id="print" ng-click="printSequenz()" title="Sequenz als PDF ausdrucken">
+    <i class="fa fa-print" aria-hidden="true"></i>
+  </div>
+  <div ng-show="selectedAsanas.length" id="trash" dnd-list="[]" ng-click="deleteAll();" title="Sequenz löschen" ng-class="{'tutorial':firstTime.trash}">
+   <i class="fa fa-trash" aria-hidden="true"></i>
+ </div>
+ <div id="save" ng-click="saveAsanas();" title="Sequenz speichern">
+  <i class="fa fa-floppy-o" aria-hidden="true"></i>
+</div>
+<div id="restore" ng-click="restoreAsanas();" title="gespeicherte Sequenz wiederherstellen">
+  <i class="fa fa-undo" aria-hidden="true"></i>
+</div>
+<div id="share" ng-if="selectedAsanas.length" ng-click="shareSequence();" title="Sequenz teilen">
+ <i class="fa fa-share-alt" aria-hidden="true"></i>
+</div>
+<div id="report-bug" ng-if="canReportBug" onclick="reportBug();" title="Report Bug">
+  <i class="fa fa-bug" aria-hidden="true"></i>
+</div>  
+<div id="infos" onclick="infoBox();" title="Infos">
+  <i class="fa fa-info" aria-hidden="true"></i>
+</div>     
+</div>
+</div>

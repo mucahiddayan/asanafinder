@@ -1,0 +1,1055 @@
+    :root{
+      --border-normal :#3c3c3c;
+      --border-reversed:#ea850f;
+      --warnung:#ea850f;
+      --error:#ff0000;
+      --dragover:#4db2ec;
+      --checked:#26ca26;
+
+      --level-basic:green;
+      --level-mittelstufe:orange;
+      --level-masterclass:red;
+      --types:#0cdc0c;
+      --name:/*255,77,145*/255,255,255;
+      --sanskritName:234,133,15;
+      --preparing:193,193,6;
+      --following:32,165,224;
+      --warning : 234,133,15;
+    }
+    body{padding:0px;}
+    .app-container {
+      position: relative;
+      margin:auto;
+      width: 95%;
+    }   
+
+    .td-main-content-wrap.td-main-page-wrap {
+      overflow: hidden;
+    }
+    #asana-container {
+      text-align: center;
+      min-height: 500px;
+      margin: 0 auto;
+      display: block;
+      width: 100%;
+      counter-reset: asana;
+    }
+
+    .asana.filtered .data-filter-tag::before {
+      counter-increment: asana;
+      /*content: counter(asana);*/
+      font-size: 10px;
+      position: absolute;
+      width: 60%;
+      right: 20%;
+      bottom: 5px;
+      line-height: 11px;
+      color:#fff;
+    }
+
+    .asana.as-list.filtered .data-filter-tag::before {
+      height: 10px;
+      width: 10px;
+      right: 10px;
+      color:transparent;
+    }
+
+    .asana.as-list.filtered:hover .data-filter-tag::before {
+      width: 100%;
+      height: 20;
+      right: 0px;
+      bottom: 0px;
+      color:#fff;
+      font-size: 15px;
+      line-height: 22px;
+    }
+
+    .asana.filtered.mutual .data-filter-tag::before{
+      background: -webkit-linear-gradient(to right, rgba(var(--preparing),.5), rgba(var(--following),.5));
+      background:    -moz-linear-gradient(to right, rgba(var(--preparing),.5), rgba(var(--following),.5));
+      background:     -ms-linear-gradient(to right, rgba(var(--preparing),.5), rgba(var(--following),.5));
+      background:      -o-linear-gradient(to right, rgba(var(--preparing),.5), rgba(var(--following),.5));
+      background:         linear-gradient(to right, rgba(var(--preparing),.5), rgba(var(--following),.5));
+      content:'in Vorbereitenden und Anschliessenden';
+    }
+
+    .asana.filtered.preparing .data-filter-tag::before{
+      background-color:rgba(var(--preparing),.8);
+      content:'in Vorbereitenden';
+    }
+
+    .asana.filtered.following .data-filter-tag::before{
+      background-color:rgba(var(--following),.8);
+      content:'in Anschliessenden';
+    }
+
+
+
+
+    .asana.ng-scope {            
+      width: 29%;
+      height: 380px;/*450px*/    
+      box-shadow: 0 0 1px #bcbcbc;
+      margin: 15px 5px;
+      overflow: hidden;
+      padding: 5px;
+      display:inline-block;
+      -webkit-transition: all .5s;
+      -moz-transition: all .5s;
+      -ms-transition: all .5s;
+      -o-transition: all .5s;
+      transition: all .5s;
+      cursor:-webkit-grab;
+      position: relative;
+    }
+    #enlarge-button {
+      position: relative;
+      z-index: 999;
+      color: #bcbcbc;
+      cursor: pointer;
+      width: 100%;
+      text-align: right;
+      height: 0px;
+      right: 10px;
+    }
+
+    .enlarged {
+      counter-reset: asanas;
+      position: fixed;
+      top: 0;
+      left: 0;
+      padding-top:30px;
+      width: 100% !important;
+      height: 100% !important;
+      overflow: auto !important;
+      background: rgba(255,255,255,.97) !important;
+    }
+
+    .enlarged .asana{
+      position: relative;
+    }
+
+    .enlarged .asana::before{
+      counter-increment: asanas;
+      content: counter(asanas);
+      right: 0px;
+      top:0px;
+      position: absolute;
+      height: 20px;
+      line-height: 14px;
+      padding: 2px;
+      background-color: #ececec;
+      color: #fff;
+    }
+
+    .enlarge-activ {
+     
+    }
+
+    .enlarge-activ i {
+      color: var(--warnung);
+    }
+
+    #search-input input {
+      border-color: var(--border-normal);
+      border-radius: 0;
+      height: 30px;
+    }
+
+    #restore-filter-options {
+      list-style: none;
+      text-align: center;
+      margin:0px;
+    }
+
+    #restore-filter-options li{
+      margin-left:0px;
+    }
+
+    #restore-filter-options li label:hover{
+      background-color: #ececec;
+    }
+    #restore-filter-options li label{
+      width: 93%;
+      height: 50px;
+      vertical-align: middle;
+    }
+
+    #filter-restore-box input:checked + label {
+      color: var(--dragover);
+    }
+
+    #filter-restore-box #content{
+      height:400px;
+      overflow: auto;
+      margin-bottom: 10px;
+    }
+
+    .asana.ng-scope:hover{
+      box-shadow: 0 0 5px #bcbcbc;
+    }
+
+    .asana .title{cursor: pointer;}
+    .thumb {
+      overflow: hidden;
+      width: 100%;
+      margin: 0 auto;
+    }
+    .thumb img{
+      width: 100%;
+      height: auto;
+      pointer-events: none;
+    }
+    
+    .levels {   
+      text-align: right;
+    }
+    .preparing-ch {
+      text-align: left;
+      font-style: italic;
+    }   
+    #filter-sort-search label {
+      display: inline-block;
+      vertical-align: text-top;     
+    }
+    .pagination.ng-isolate-scope {
+      text-align: center;
+    }
+    .td-icon-menu-up{    
+      transition:all .5s;
+    }
+    .td-icon-menu-up.reversed {
+      transform: rotate(180deg);
+      transition:all .5s;
+    }
+    #fss-wrapper {min-height: 20px;}
+    #filter-sort-search {text-align: center;}
+    #config .label-hidden-input {
+      width: 100%;
+      text-align: center;
+      overflow: hidden;
+    }
+    #user {
+      width: 100%;
+      text-align: right;
+      margin:auto;
+    }
+    #user #user-name {
+      font-weight: bolder;
+      text-transform: capitalize;
+    }
+    #drop-area {
+      width: 100%;
+      height: 200px;
+      z-index: 99;
+      overflow: hidden;
+      resize: horizontal;
+      margin: 0px;
+      background-color: #fff;
+      box-shadow:0 1px 1px #ececec;
+      text-align: center;
+    }
+    .overflowed{overflow-y:auto !important;}
+    .label{display: none;}
+    #drop-area .not-in-drop-area {
+      display: none;
+    }
+    .not-in-drop-area {
+      /*height: 110px;*/
+      overflow: hidden;
+      /*simones aenderung wuensche*/
+      display: none;
+    }
+    #drop-area .asana .thumb{
+      width:100px;
+      height:100px;
+      box-shadow:0 0 1px
+    }
+    #drop-area .asana{
+      width:110px;
+      height:150px;
+      display: inline-block;
+    }
+    #progress {
+      position: absolute;
+      top: 0;
+      text-align: center;
+      width: 210%;
+      left: -50%;
+      height: 100%;
+      background: #fff;
+      z-index: 99999;
+      padding: 20%;
+    }
+    .number-of-asanas {    
+      box-shadow: 0 0 10px #bcbcbc inset;
+      padding: 5px;
+      border-radius: 100%;
+      width: 40px;
+      height: 40px;
+      line-height: 30px;
+      text-align: center;
+      color: #fff;
+      text-shadow: 1px 1px 1px #000;
+      transition:all .5s;
+      margin-top: -50px;
+    }
+    .number-of-asanas.general{
+      position: fixed;
+      right: 100px;
+    }
+    .number-of-asanas.drop-area{
+      position: absolute;
+      left:10px;
+      top:10%;
+      z-index: 999;
+      background-color: #fff;
+    }
+    #delete-print div {
+      width: 10%;     
+      background: #fff;
+      margin: 1px;
+      text-align: center;
+      border: 1px solid #dcdcdc;
+      display: inline-block;
+      cursor: pointer; 
+      color:var(--border-normal); 
+    }
+    #delete-print div:hover i{
+      color:#005580;
+    }
+    #delete-print div i {
+      font-size: 30px;
+      line-height: 40px;
+    }
+    #delete-print {
+      text-align: center;
+      width: 100%;
+      margin-top: 10px;
+    }
+    #delete-print div:active{
+      transform:scale(.99);
+    }
+    /*.saveAfterImport i {
+      -webkit-text-stroke: 1px var(--checked) !important;
+      }*/
+      #drop-area.dndDragover{
+        box-shadow: 0 0 10px 0px var(--dragover);
+      }
+
+      #trash.dndDragover{
+        border-color:red;
+      }
+      #drop-area .asana.dndDraggingSource {
+        display: none;
+      }
+      .dndDraggingSource {
+        transform: scale(.98);
+        transition: all .5s;
+      }
+      .custom-boxes {
+        position: fixed;
+        width: 50%;
+        left: 25%;
+        top: 30%;
+        background: rgba(0,0,0,.9);
+        padding: 10px;
+        color: #fff;
+        text-align: center;
+        max-height: 500px;
+        overflow: hidden;
+        box-shadow: 0px 0px 10px 0px #000;
+        border-radius: 2px;
+        z-index: 9999;
+      }
+      .custom-boxes textarea{
+        width: 100% !important;
+        max-height: 100% !important;
+        resize:none;
+      }
+      .close-custom-box {
+        cursor: pointer;
+        position: absolute;
+        right: 10px;
+        top: 5px;
+      }
+      .custom-boxes h6{
+        margin:3px;
+        font-size: 16px;
+      }
+      .custom-boxes label {
+        display: inline-block;
+        vertical-align: sub;
+        margin:5px;
+
+      }
+
+      .custom-boxes button {
+        display: block;
+        margin: auto;
+        background-color: #333;
+        outline: none;
+        border: 1px solid;
+      }
+
+      .custom-boxes button:active {
+        transform: scale(.98);
+      }
+
+      .td-main-content-wrap > .dndPlaceholder {
+        display:none !important;
+      }
+
+      .custom-boxes .inputfield::-webkit-input-placeholder ,
+      .custom-boxes .inputfield:-moz-placeholder ,
+      .custom-boxes .inputfield::-moz-placeholder ,
+      .custom-boxes .inputfield:-ms-input-placeholder {
+        color: var(--error);
+        text-align: center;
+      }
+      .number-of-asanas.no-result {box-shadow: 0 0 10px #FF5722 inset;}
+      .no-result-text {
+        font-size: 14pt;
+        text-align: center;
+        margin: 100px;
+      }
+      [dnd-list] .dndPlaceholder {
+        background-color: rgba(77, 178, 236, .2);
+        height: 150px;
+        width: 110px;
+        position:relative;
+        display:inline-block;
+        border:1px dotted var(--dragover);
+        margin: 15px 5px;
+        overflow: hidden;
+        padding: 5px;
+      }
+
+      #sab.opened{
+        left:0px;
+      }
+      #sab.closed{
+        height:0px;
+        border:none !important;
+      }
+
+      #delete-print [dnd-list] .dndPlaceholder {
+        display: none;
+      }
+      #delete-print .dndDragover i {
+        color:red;
+      }
+      #sab {
+        position: fixed;
+        z-index: 9999;
+        width: 100%;      
+        bottom: 0;
+        left: 0;
+        height: 275px;
+        box-shadow: 0px -2px 10px 0px #333;
+        color: #ececec;
+        background-color: #fff;
+        -webkit-transition: all .5s;
+        -moz-transition: all .5s;
+        -ms-transition: all .5s;
+        -o-transition: all .5s;
+        transition: all .5s;     
+      }
+
+      #to-print{display:none;}
+      #clear-search {
+        position: absolute;
+        margin-left: -20px;
+        cursor:pointer;
+      }
+      #searched-words .words {
+        margin: 2px;
+        border: 1px solid #ececec;
+        padding: 2px;
+        color: #acacac;
+        display: inline-block;
+      }
+      .hidden-inputs {
+        display: none;
+      }
+
+      .label-hidden-input {
+        text-transform: uppercase;
+        font-family: "PT Sans";
+      }
+      .label-hidden-input {
+        border: 1px solid var(--border-normal);
+        padding: 2px;
+        color: var(--border-normal);
+        height: 30px;
+        line-height: 13px;
+        font-size: 13px;
+        margin: 0 2px;
+        background-color: #fff;
+        overflow:hidden;
+      }
+
+      .label-hidden-input:hover {
+        background: #b1b1b1;
+        color: #fff;
+      }
+
+      .label-inline {
+        display: table;
+      }
+
+      .label-wrap {
+        display: table;
+        width:100%;
+        height: 100%;
+      }
+      .label-wrap span {
+        display:table-cell;
+        vertical-align: middle;
+        word-break: break-word;
+      }
+
+      #config button.label-hidden-input:active {
+        transform: scale(.98);
+      }
+
+      .hidden-inputs:checked + label {
+        background: var(--border-normal);
+        color: #fff;
+      }
+      .hasChild{
+        font-size:10px;
+        display:inline;
+        width:45%;
+        padding:3px;
+        border:1px solid var(--border-normal);
+        -webkit-box-decoration-break: clone;
+        -o-box-decoration-break: clone;
+        box-decoration-break: clone;
+      }
+      .hasChild span{
+        cursor:pointer;
+      }
+      /*.hasChild.preparing span:not(:first-child),
+      .hasChild.following span:not(:first-child),
+      .hasChild.types span:not(:first-child){
+        display:none;   
+      }*/
+      /*.hasChild span:not(:last-child)::after {content: " / ";color:#dcd6d6;}*/    
+      .hasChild.levels .mittelstufe{color:var(--level-mittelstufe);}
+      .hasChild.levels .basic{color:var(--level-basic);}
+      .hasChild.levels .masterclass{color:val(--level-masterclass);}
+      .hidden-inputs:checked + .label-hidden-input.reversed {
+        border-color: var(--border-reversed);
+      }
+      .removeTag:hover {
+        cursor: pointer;
+        color: var(--warnung);
+      }
+
+      .app-container i.fa{
+        font-size: 20px;
+        line-height: 25px;
+      }
+
+      .as-list {
+        height: 45px !important;
+        margin: 5px !important;
+      }
+
+      .as-list:hover {
+        background-color: #ececec;
+      }
+
+      .as-list img,.as-list .not-in-drop-area{
+        display:none;
+      }
+
+      .XOR {
+        color: var(--warnung) !important;
+        cursor: pointer;
+      }
+      #search-input,#searched-words {
+        width: 100%;
+        margin: auto;
+        text-align: center;
+        position: relative;
+      }
+
+      #search-input .result-asana-number.no-result {
+        color:var(--warnung);
+      }
+      #search-input .result-asana-number {
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        border-left: 1px solid #000;
+        height: 30px;
+        line-height: 23px;
+        color: #333;
+        min-width: 30px;
+        font-size: 20px;
+        padding: 5px;
+      }
+
+      #config {
+        display: inline-flex;
+        margin-bottom:5px;
+        justify-content: center;
+        width: 100%;
+      }
+
+      #config select {
+        border-color:var(--border-normal);      
+        border-radius: 0;
+      }
+      #drop-area .title {
+        text-align: center;
+        font-size: 12px;
+        word-break: break-word;
+      }
+      .hasChild.following {
+        border-color: var(--following);
+      }
+      .hasChild.preparing {
+        border-color: var(--preparing);
+      }
+      
+      .hasChild.types {
+        border-color: var(--types);
+      }
+
+      .tutorial {
+        border: 3px dotted var(--dragover) !important;
+      }
+
+      #daWarnung{
+       text-align: center;
+       padding: 10px;
+       position: absolute;
+       font-size: 13px;
+       width: 100%;              
+       pointer-events: none;        
+     }
+
+     .warning-box {
+      background-color: rgba(var(--warning),.3);
+      color: var(--dragover);
+      border-color: rgb(var(
+        --warning));
+    }
+
+    .warning-blink{
+      animation: warning-blink 1.5s infinite;
+      animation-direction:alternate-reverse;
+    }
+
+     .emptyWarning{
+      animation: dropAreaText 1.5s infinite;
+      animation-direction:alternate-reverse;
+    }
+    @keyframes dropAreaText{
+      from{color:var(--warnung);border-color:#fff;}
+      to{color:#ececec;border-color:var(--dragover);}
+    }
+
+
+    @keyframes warning-blink{
+      to{
+        background-color:rgb(var(--warning));
+      }
+    }
+
+    /*infobox*/
+    #infobox {
+      margin: 20% auto;
+      width: 70%;
+      background-color: rgba(1,1,1,.9);
+      padding: 10px;
+      border-radius: 2px;
+      box-shadow: 0 0 10px 0px #333;
+      overflow: auto;
+      max-height: 250px;
+    }
+
+    #infobox table {
+      color: #fff;
+    }
+
+    #infobox #text {
+      border: 1px solid #fff;
+      margin: 2px 0px;
+      padding: 5px;
+      color: #fff;
+    }
+
+    .info-icons i{font-size: 20pt;}      
+    .info-icons {      
+      width: 5%;
+      text-align: center;
+      padding: 5px;
+    }
+
+    .logged-in #top-search-filter-config.opened{
+      top:32px !important;
+    }
+    #top-search-filter-config.opened{
+      top:0px !important;
+      -webkit-transition: all .5s;
+      -moz-transition: all .5s;
+      -ms-transition: all .5s;
+      -o-transition: all .5s;
+      transition: all .5s;
+      background-color: #fff;
+      box-shadow: 0px 3px 5px 0px #333;
+      padding: 5px;      
+    }
+    #top-search-filter-config.opened:hover{
+      z-index: 99999999;
+    }
+    .sticky-config .opened#top-search-filter-config {
+      position: initial;
+      box-shadow: none;
+    }
+    #top-search-filter-config label.label-hidden-input{
+      width: 30%;
+    }
+    #top-search-filter-config{
+      position:fixed;
+      left:0;
+      top:-100px;
+      width:100%; 
+      z-index: 99999;
+      -webkit-transition: all .5s;
+      -moz-transition: all .5s;
+      -ms-transition: all .5s;
+      -o-transition: all .5s;
+      transition: all .5s;
+      z-index: 999999;
+    }
+
+    #top-search-filter-config #inner {
+      width: 100%;
+      margin: auto;    
+    }
+
+     #top-search-filter-config #inner #SFA+.not-empty{
+      border-color: rgba(var(--following),1);
+     }
+
+     #top-search-filter-config #inner #SPA+.not-empty{
+      border-color: rgba(var(--preparing),1);
+     }
+
+     #top-search-filter-config #inner #SPFA+.not-empty{      
+      border-color: rgba(var(--preparing),1);
+     }
+
+     #top-search-filter-config #inner label:not(.not-empty){
+       pointer-events: none;
+        opacity: .3;
+     }    
+
+     #SPA:checked +.label-hidden-input {
+      background: rgba(var(--preparing),.5);
+    }
+
+    #SPFA:checked +.label-hidden-input {
+      background: -webkit-linear-gradient(to right, rgba(var(--preparing),.5), rgba(var(--following),.5));
+      background:    -moz-linear-gradient(to right, rgba(var(--preparing),.5), rgba(var(--following),.5));
+      background:     -ms-linear-gradient(to right, rgba(var(--preparing),.5), rgba(var(--following),.5));
+      background:      -o-linear-gradient(to right, rgba(var(--preparing),.5), rgba(var(--following),.5));
+      background:         linear-gradient(to right, rgba(var(--preparing),.5), rgba(var(--following),.5));
+    }
+
+    #SFA:checked +.label-hidden-input {
+      background: rgba(var(--following),.5);
+    }
+
+
+    .pagination ul>li {
+      display: table-cell;
+      cursor:pointer;
+    }
+    .sticky-config#filter-sort-search {
+      position: fixed;    
+      background: #fff;
+      left: 0px;
+      width: 100%;
+      z-index: 999;
+      padding: 10px;
+      box-shadow: 0px 2px 10px 0px #333;
+      transition:all .5s;
+      z-index: 999999;
+    }
+
+    #filter-sort-search.force-no-sticky {
+      position: inherit !important;
+    }
+
+    #social-links div {
+      display: inline-flex;
+      margin: 5px;
+      width: 40px;
+    }
+
+    #social-links {
+      background-color: rgba(255,255,255,.3);
+      box-shadow: 0px 0px 5px 0px #000 inset;
+    }
+
+     .result-paginated {
+      color: var(--warnung);
+      text-align: center;
+      border: 1px solid;
+      padding: 2px;
+      margin: 5px 0px;
+    }
+
+    /*********************************************************** Large desktop */
+    @media (min-width: 979px) {
+    
+  }
+
+  /********************************************* Portrait tablet to landscape and desktop */
+  @media (min-width: 768px) and (max-width: 979px) { 
+    .asana.ng-scope {
+      width: 48%;        
+    }
+    
+    .logged-in #top-search-filter-config.opened{
+      top:48px !important;
+    }      
+
+    #sab {
+      top: inherit;
+      bottom: 0px;
+      width: 100%;
+      height: 265px;
+      left: 0;
+    }
+
+    .as-list {
+      width: 30% !important;
+    }
+
+    .thumb {
+      width: 80%;
+    }
+
+    #drop-area {
+      height: 190px;
+      resize: vertical;
+      padding:0px 30px;
+    }
+
+    #delete-print div {
+      width: 12%;
+    }
+
+    .number-of-asanas.drop-area {
+      left: 1px;
+      top: 7%;
+    }
+
+    .number-of-asanas.general {
+      right: 15px;       
+    }
+    #tutorial{      
+      top: 65%;
+      transform: rotate(-90deg);
+      line-height: 100px;
+      left: 34%;
+    }
+    #tutorialII {
+      top: 80%;
+      left: 240px;
+      transform: rotate(-90deg);
+    }
+    #tutorialII span {
+      margin-left: -70px;
+      -webkit-writing-mode: vertical-lr;
+      line-height: 10px;
+      float: right;
+    }
+    #filter-restore-box #content {
+      height: 350px;
+      overflow: auto;
+    }
+    #restore-filter-options li label {
+      width: 89%;       
+    }
+    #infobox {
+      margin: 33% auto;
+      width: 50%;
+
+    }
+  }
+
+
+  /******************************************** Landscape phone to portrait tablet */
+  @media (max-width: 767px) {
+
+  }
+
+  /***************************************************** Landscape phones and down */
+  @media (max-width: 480px) {
+    .asana.ng-scope {
+      width: 75%;
+      height: 320px;        
+    }
+    .logged-in #top-search-filter-config.opened{
+      top:48px !important;
+    }      
+    .thumb{
+      width: 90%;       
+    }
+
+    .as-list {
+      width: 47% !important;
+    }
+
+    #drop-area .asana{
+      width: 70px;
+      height: 70px;
+    }
+    #sab {        
+      top:initial;        
+      width: 100%;
+      height: 175px;
+      bottom: 0px !important;        
+      left: 0;        
+    }
+    #drop-area{
+      height: 100px;
+      resize: vertical;
+      padding: 0px 20px;
+    }
+    #delete-print div{
+      width: 12%;
+    }
+    #drop-area .asana .thumb {
+      width: 40px;
+      height: 40px;
+      box-shadow: 0 0 1px;
+    }
+    .number-of-asanas.drop-area{
+      top:16%;
+      left: 2px;
+    }
+    .number-of-asanas.general {
+      right: 0px;
+      width: 30px;
+      height: 30px;
+      font-size: 15px;
+      line-height: 20px;
+      position: absolute;
+      top: 135px;
+    }
+    #config .label-hidden-input {        
+      font-size: 9px;
+      word-break: break-word;
+      line-height: 9px;     
+    }
+    [dnd-list] .dndPlaceholder {
+      height: 70px;
+      width: 70px;
+
+    }
+    .custom-boxes{
+      width: 70%;
+      left: 15%;
+      top: 27%;
+    }
+    .no-result-text {
+      margin: 50px;
+    }
+    .pagination ul>li>a, .pagination ul>li>span{padding:4px 3px;}
+    ul li, ol li{margin-left: 11px;}
+    #tutorial{
+      top: 55%;
+      left: 17%;
+      transform: rotate(-90deg);
+      font-size: 80px;
+      line-height: 54px;
+    }
+    #tutorialII {
+      top: 70%;
+      left: 130px;
+      transform: rotate(-90deg);
+    }
+
+    #tutorialII span {
+      margin-left: -70px;
+      -webkit-writing-mode: vertical-lr;
+      line-height: 10px;
+      float: right;
+    }
+    #filter-restore-box #content {
+      height: 200px;
+      overflow: auto;
+    }
+    #restore-filter-options li label {
+      width: 89%;       
+    }
+    #infobox {
+      margin: 40% auto;
+      width: 90%;
+
+    }
+  }
+  /************************************************************* 320px Iphone 4*/
+  @media (max-width: 320px) {
+    #tutorial{
+      top: 45%;
+      left: 20%;
+      transform: rotate(-90deg);
+      font-size: 80px;
+      line-height: 22px;
+    }
+    .as-list {
+      width: 46% !important;
+    }
+    .logged-in #top-search-filter-config.opened{
+      top:48px !important;
+    }      
+    #tutorial i{
+      font-size: 70px;
+    }
+
+    #tutorial span{
+      font-size: 9px;
+    }
+    #delete-print div {
+      width: 14%;
+    }
+
+    #tutorialII {
+      top: 63%;
+      left: 120px;
+      transform: rotate(-90deg);
+    }
+
+    #tutorialII span {
+      margin-left: -70px;
+      -webkit-writing-mode: vertical-lr;
+      line-height: 10px;
+      float: right;
+    }
+    #infobox {
+      margin: 60% auto;
+      width: 90%;       
+    }
+  }
+
+
+/**/
+
+.page-template-asanafinder-app .td-header-sp-top-menu {
+    height: 30px;
+    padding: 10px !important;
+}
+.page-template-asanafinder-app .td-social-icon-wrap [class^="td-icon-"]:before, [class*=" td-icon-"]:before {
+    line-height: 40px;
+}
+
